@@ -13,7 +13,7 @@ void cylinderType::print() const {
 	circleType::print();
 	
 	// Override it, and print the values of the cylinder object
-	cout << "Cylinder Height: " << getHeight() << endl;
+	cout << "Cylinder Height: " << height << endl;
 	cout << "Cylinder Surface Area: " << getSurfaceArea() << endl;
 	cout << "Cylinder Volume: " << getVolume() << endl;
 
@@ -29,16 +29,16 @@ void cylinderType::setHeight(double h) {
 // Setter for the center of the base
 void cylinderType::setBaseCenter(double x, double y) {
 	
-	pointType::setPoint(x, y);
+	setPoint(x, y);
 	
 }
 
 // Setter for the center, radius, and height
 void cylinderType::setCenterRadiusHeight(double x, double y, double r, double h) {
 	
-	pointType::setPoint(x, y);
-	circleType::setRadius(r);
-	cylinderType::setHeight(h);
+	setPoint(x, y);
+	setRadius(r);
+	setHeight(h);
 	
 }
 
@@ -52,14 +52,14 @@ double cylinderType::getHeight() const {
 // Calculate the volume; Getter for the volume
 double cylinderType::getVolume() const {
 
-	return (3.1416 * pow(circleType::getRadius(), 2) * getHeight());
+	return (getArea() * height);
 
 }
 
 // Calculate the surface area; Getter for the surface area
 double cylinderType::getSurfaceArea() const {
 
-	return ( (2 * 3.1416 * circleType::getRadius() * getHeight()) + (2 * 3.1416 * pow(radius, 2)) );
+	return ( (getCircumference() * height) + (2 * getArea()) );
 
 }
 
@@ -69,4 +69,5 @@ cylinderType::cylinderType(double x, double y, double r, double h):circleType(x,
 	height = h;
 	
 }
+
 
